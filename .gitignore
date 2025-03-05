@@ -3,7 +3,6 @@ _Segment.py
 _ZwoWorkout.py
 .venv/
 .vscode/
-
 .installed.cfg
 bin
 develop-eggs
@@ -17,3 +16,4 @@ lib64
 __pycache__/
 output/
 Workouts/
+Tools/

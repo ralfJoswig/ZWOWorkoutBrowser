@@ -1,38 +1,21 @@
 import tkinter as tk
 from EnumSegmentType import SegmentType
+import GraphicsParameter
+import CoordinateSystem
 
 class WorkoutDisplayGraph:
     def __init__(self, root):
-        self.frame = tk.Frame(root)
-        self.frame.pack(fill=tk.BOTH, 
-                        expand=True)
+        window_width = 800
+        window_height = 600
         self.workout = None
-        self.ftp = None
         self.draw_first_cadence = True
-        self.min_watt = 0
-        self.max_x = 0
-        self.max_y = 0
-        # Canvas erstellen mit weißem Hintergrund
-        self.window_width = 800
-        self.window_height = 600
-        self.canvas = tk.Canvas(root, 
-                                width=self.window_width, 
-                                height=self.window_height, 
-                                bg='white')
-        self.canvas.pack(fill=tk.BOTH, 
-                         expand=True, 
-                         padx=20, 
-                         pady=20)
-        
-        # Konstanten für die Darstellung
-        self.rand = 50  # Rand um das Koordinatensystem
-        self.breite = self.window_width - 100 # Nutzbare Breite
-        self.hoehe = self.window_height - 100 # Nutzbare Höhe
-
-        self.x0 = self.rand
-        self.y0 = self.hoehe + self.rand
-
         self.tooltip_position_offset = 30
+        self.segment_clicked = False
+        self.last_cadence_y = 0
+        
+        frame = tk.Frame(root)
+        frame.pack(fill=tk.BOTH, 
+                    expand=True)
 
         # Tooltip-Label erstellen (anfangs unsichtbar)
         self.tooltip = tk.Label(root,
@@ -40,38 +23,53 @@ class WorkoutDisplayGraph:
                                 relief='solid',
                                 borderwidth=1)
 
+        canvas = tk.Canvas(root, 
+                           width=window_width, 
+                           height=window_height, 
+                           bg='white')
+        canvas.pack(fill=tk.BOTH, 
+                    expand=True, 
+                    padx=20, 
+                    pady=20)
+        
+        rand = 50 # Rand um das Koordinatensystem
+        hoehe = window_height - 100 # Nutzbare Höhe
+        y0 = rand + hoehe
+        self.parameters = GraphicsParameter.GraphicsParameter(canvas = canvas,
+                                                              rand = rand,
+                                                              hoehe = hoehe,
+                                                              breite = window_width - 100, # Nutzbare Breite
+                                                              y0 = y0,
+                                                              x0 = rand) 
+        
         self.bind_events()
 
-        self.segment_clicked = False
-
-        self.last_cadence_y = 0
-
     def on_resize(self, event):
-        if self.workout and self.ftp:
-            self.window_width = max(event.width, 100)
-            self.window_height = max(event.height, 100)
-            self.breite = self.window_width - 100
-            self.hoehe = self.window_height - 100
-            self.x0 = self.rand
-            self.y0 = self.hoehe + self.rand
+        if self.workout and self.parameters.ftp:
+            window_width = max(event.width, 100)
+            window_height = max(event.height, 100)
+            self.parameters.breite = window_width - 100
+            self.parameters.hoehe = window_height - 100
+            self.parameters.x0 = self.parameters.rand
+            self.parameters.y0 = self.parameters.hoehe + self.parameters.rand
             self.hide_tooltip(None)
-            self.set_workout(self.workout, self.ftp, self.min_watt)
+            self.set_workout(self.workout, self.parameters.ftp, self.parameters.min_watt)
 
     def bind_events(self):
-        self.canvas.tag_bind('segment', 
+        self.parameters.canvas.tag_bind('segment', 
                              '<Button-1>', 
                              self.on_click)
-        self.canvas.bind('<Button-1>', 
+        self.parameters.canvas.bind('<Button-1>', 
                          self.hide_tooltip)
-        self.canvas.bind('<Configure>', 
+        self.parameters.canvas.bind('<Configure>', 
                          self.on_resize)
 
     def on_click(self, event):
         # Finde das Polygon unter dem Mauszeiger
-        item = self.canvas.find_closest(event.x, 
+        item = self.parameters.canvas.find_closest(event.x, 
                                         event.y)
         # Hole alle Tags des Polygons
-        tags = self.canvas.gettags(item)
+        tags = self.parameters.canvas.gettags(item)
         # Formatiere die Tags für die Anzeige
         tags_text = ""
         for tag in tags:
@@ -99,155 +97,71 @@ class WorkoutDisplayGraph:
                                          y=event.y + self.tooltip_position_offset)
 
     def zeichne_koordinatensystem(self, max_cadence):
-        # X-Achse
-        self.canvas.create_line(self.rand, 
-                                self.hoehe + self.rand, 
-                                self.breite + self.rand + 10, 
-                                self.hoehe + self.rand, 
-                                arrow=tk.LAST)
-        
-        # Y-Achse
-        self.canvas.create_line(self.rand, 
-                                self.hoehe + self.rand, 
-                                self.rand, 
-                                self.rand, 
-                                arrow=tk.LAST)
-        
-        # Z-Achse
-        self.canvas.create_line(self.breite + self.rand + 10, 
-                                self.hoehe + self.rand, 
-                                self.rand + self.breite + 10, 
-                                self.rand, 
-                                arrow=tk.LAST)
-
-        
-        # Beschriftungen X-Achse (Zeit in Minuten)
-        for i in range(0, self.max_x + 1, 10):
-            x = self.rand + (i * self.breite / self.max_x)
-            self.canvas.create_text(x, 
-                                    self.hoehe + self.rand + 20, 
-                                    text=str(i))
-            self.canvas.create_line(x, 
-                                    self.hoehe + self.rand + 5, 
-                                    x, 
-                                    self.hoehe + self.rand - 5)
-        
-        # Beschriftungen Y-Achse (Watt)
-        if self.max_y < self.min_watt:
-            max_y = self.min_watt
-        else:
-            max_y = self.max_y
-
-        for i in range(0, max_y, 20):
-            y = self.hoehe + self.rand - (i * self.hoehe / max_y)
-            self.canvas.create_text(self.rand - 20, 
-                                    y, 
-                                    text=str(i))
-            self.canvas.create_line(self.rand - 5, 
-                                    y, 
-                                    self.rand + 5, 
-                                    y)
-        
-        # Beschriftungen Z-Achse (Cadence)
-        for i in range(0, max_cadence, 10):
-            y = self.hoehe + self.rand - (i * self.hoehe / max_cadence)
-            self.canvas.create_text(self.rand + self.breite + 25, 
-                                    y, 
-                                    text=str(i))
-            self.canvas.create_line(self.rand + self.breite + 10 - 5, 
-                                    y, 
-                                    self.rand + self.breite + 10 + 5, 
-                                    y)
-            
-        # Achsenbeschriftungen
-        self.canvas.create_text(self.breite/2 + self.rand, 
-                                self.hoehe + self.rand + 40, 
-                                text="Zeit (Minuten)")
-        self.canvas.create_text(self.rand - 40, 
-                                self.hoehe/2, 
-                                text="Watt", 
-                                angle=90)
-        self.canvas.create_text(self.rand + self.breite + 40,
-                                self.hoehe / 2,
-                                text="Cadence",
-                                angle=270)
-        
-        #Line für FTP
-        if self.max_y < self.min_watt:
-            max_y = self.min_watt
-        else:
-            max_y = self.max_y
-
-        y1 = self.hoehe + self.rand - (self.ftp * self.hoehe / max_y)
-        self.canvas.create_line(self.rand, 
-                                y1, 
-                                self.breite + self.rand, 
-                                y1,
-                                width=3,
-                                fill="cyan") 
+        self.CoordinateSystem = CoordinateSystem.CoordinateSystem(self.parameters)
+        self.CoordinateSystem.plot()
         
     def det_fill_colour(self, power):
-        ftp_proz = 100 * power / self.ftp if self.ftp != 0 else 100
-        if ftp_proz < 55:
+        ftp_proz = 100 * power / self.parameters.ftp if self.parameters.ftp != 0 else 100
+        if ftp_proz < 56:
             return 'gray'
-        elif ftp_proz < 75:
+        elif ftp_proz < 76:
             return 'blue'
-        elif ftp_proz < 90:
+        elif ftp_proz < 91:
             return 'green'
-        elif ftp_proz < 105:
-            return 'dark green'
-        elif ftp_proz < 120:
+        elif ftp_proz < 106:
             return 'yellow'
-        elif ftp_proz < 150:
+        elif ftp_proz < 121:
             return 'orange'
-        else:
+        elif ftp_proz < 151:
             return 'red'
+        else:
+            return 'dark red'
 
     def zeichne_segment(self, min_power, max_power, duration, tags, cadence, max_cadence):
         # Polygon zeichnen
         # Die Koordinaten werden als Liste von x,y Punkten übergeben
         # Format: [x1, y1, x2, y2, x3, y3, ...]
-        if self.max_y < self.min_watt:
-            max_y = self.min_watt
+        if self.parameters.max_y < self.parameters.min_watt:
+            max_y = self.parameters.min_watt
         else:
-            max_y = self.max_y
+            max_y = self.parameters.max_y
 
-        y1 = self.hoehe + self.rand - (min_power * self.hoehe / max_y)
-        y2 = self.hoehe + self.rand - (max_power * self.hoehe / max_y)
-        x2 = self.last_x + (duration * self.breite / self.max_x) 
+        y1 = self.parameters.hoehe + self.parameters.rand - (min_power * self.parameters.hoehe / max_y)
+        y2 = self.parameters.hoehe + self.parameters.rand - (max_power * self.parameters.hoehe / max_y)
+        x2 = self.last_x + (duration * self.parameters.breite / self.parameters.max_x) 
         polygon_coords = [self.last_x, 
-                          self.y0,
+                          self.parameters.y0,
                           self.last_x, 
                           y1,
                           x2, 
                           y2, 
                           x2, 
-                          self.y0]
+                          self.parameters.y0]
         
         fill_colour = self.det_fill_colour(max_power)
 
         tags.insert(0, 'segment')
-        self.canvas.create_polygon(polygon_coords,
+        self.parameters.canvas.create_polygon(polygon_coords,
                                    fill=fill_colour,        # Füllfarbe
                                    outline='red',    # Randfarbe
                                    width=1,
                                    tags=tags)
         
         if max_cadence != 0 and cadence != 0:
-            y1 = self.hoehe + self.rand - (cadence * self.hoehe / max_cadence)
+            y1 = self.parameters.hoehe + self.parameters.rand - (cadence * self.parameters.hoehe / max_cadence)
             y2 = y1
             if self.draw_first_cadence == False:
-                self.canvas.create_line(self.last_x,
+                self.parameters.canvas.create_line(self.last_x,
                                         self.last_cadence_y,
                                         self.last_x,
                                         y1,
-                                        fill="yellow",
+                                        fill="navy",
                                         width=5)
-            self.canvas.create_line(self.last_x, 
+            self.parameters.canvas.create_line(self.last_x, 
                                     y1, 
                                     x2, 
                                     y2, 
-                                    fill='yellow', 
+                                    fill='navy', 
                                     width=5)
             self.draw_first_cadence = False
 
@@ -258,16 +172,16 @@ class WorkoutDisplayGraph:
         return self.__frame
     
     def set_workout(self, workout, ftp, min_watt):
-        self.max_x = int(workout.duration / 60)
-        self.max_y = int(workout.max_power * ftp)
-        self.canvas.delete('all')
+        self.parameters.max_x = int(workout.duration / 60)
+        self.parameters.max_y = int(workout.max_power * ftp)
+        self.parameters.min_watt = min_watt
+        self.parameters.canvas.delete('all')
         self.workout = workout
-        self.ftp = ftp
+        self.parameters.ftp = ftp
         self.draw_first_cadence = True
-        self.min_watt = min_watt
         self.zeichne_koordinatensystem(workout.get_max_cadence())
         self.hide_tooltip(None)
-        self.last_x = self.x0
+        self.last_x = self.parameters.x0
         for segment in workout.segments:
             if segment.get_segment_type() == SegmentType.INTERVALST:
                 for i in range(segment.get_repeat()):
