@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import tkinter.scrolledtext as scrolledtext
+from NormalizedAndAveragePower import NormalizedAndAveragePower
 
 class WorkoutDisplayDetails:
     def __init__(self, root):
@@ -18,10 +19,67 @@ class WorkoutDisplayDetails:
         self.add_segment_count()
         self.add_duration()
         self.add_description()
+        self.add_average_power()
+        self.add_normalized_power()
+        self.add_tss()
+        
+    def add_tss(self):
+        ttk.Label(self.__frame, 
+                  text="TSS:").grid(row=2, 
+                                   column=2, 
+                                   sticky='w', 
+                                   padx=10, 
+                                   pady=5)
+        self.__tss_var = tk.StringVar(value="")
+        self.__tss_entry = ttk.Entry(self.__frame, 
+                                     textvariable=self.__tss_var, 
+                                     width=5, 
+                                     state="readonly")
+        self.__tss_entry.grid(row=2, 
+                              column=3, 
+                              sticky='w', 
+                              padx=10, 
+                              pady=5)
 
+    def add_normalized_power(self):
+        ttk.Label(self.__frame, 
+                  text="NP:").grid(row=2, 
+                                   column=0, 
+                                   sticky='w', 
+                                   padx=10, 
+                                   pady=5)
+        self.__normalized_power_var = tk.StringVar(value="")
+        self.__normalized_power_entry = ttk.Entry(self.__frame, 
+                                                textvariable=self.__normalized_power_var, 
+                                                width=5, 
+                                                state="readonly")
+        self.__normalized_power_entry.grid(row=2, 
+                                           column=1, 
+                                           sticky='w', 
+                                           padx=10, 
+                                           pady=5)
+        
+    def add_average_power(self):
+        ttk.Label(self.__frame, 
+                  text="Durchschnittsleistung:").grid(row=1, 
+                                                      column=4, 
+                                                      sticky='w', 
+                                                      padx=10, 
+                                                      pady=5)
+        self.__avg_power_var = tk.StringVar(value="")
+        self.__avg_power_entry = ttk.Entry(self.__frame, 
+                                           textvariable=self.__avg_power_var, 
+                                           width=5, 
+                                           state="readonly")
+        self.__avg_power_entry.grid(row=1, 
+                                    column=5, 
+                                    sticky='w', 
+                                    padx=10, 
+                                    pady=5)
+        
     def add_description(self):
         ttk.Label(self.__frame, 
-                  text="Bemerkung:").grid(row=2, 
+                  text="Bemerkung:").grid(row=3, 
                                           column=0, 
                                           columnspan=2, 
                                           sticky='w', 
@@ -29,7 +87,7 @@ class WorkoutDisplayDetails:
                                           pady=5)
         # Frame für Bemerkungstext und Scrollbar
         remark_frame = ttk.Frame(self.__frame)
-        remark_frame.grid(row=3, 
+        remark_frame.grid(row=4, 
                           column=0, 
                           columnspan=6, 
                           padx=50, 
@@ -156,10 +214,18 @@ class WorkoutDisplayDetails:
                                 description if description != None else "")
         self.remark_text.config(state=tk.DISABLED)
 
-    def set_workout(self, workout):
+    def set_workout(self, workout, ftp):
         self.__name_var.set(workout.name)
         self.__author_var.set(workout.author)
         self.__type_var.set(workout.sportType.value)
         self.__seg_count_var.set(len(workout.segments))
         self.__duration_var.set(workout.get_duration_as_text())
         self.set_description(workout.description)
+
+        normalized_power, average_power = NormalizedAndAveragePower(workout).calculate(ftp)
+        self.__avg_power_var.set(average_power)
+        self.__normalized_power_var.set(normalized_power)
+        
+        intensitaetsfaktor = normalized_power / ftp
+        tss = round(( workout.duration * normalized_power * intensitaetsfaktor ) / ( ftp * 3600 ) * 100)
+        self.__tss_var.set(tss)

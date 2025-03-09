@@ -53,10 +53,10 @@ class CoordinateSystem:
                                                self.parameters.rand + 5, 
                                                y)
             
-            self.parameters.canvas.create_text(self.parameters.rand - 40, 
-                                               self.parameters.hoehe/2, 
-                                               text="Watt", 
-                                               angle=90)
+        self.parameters.canvas.create_text(self.parameters.rand - 40, 
+                                           self.parameters.hoehe/2, 
+                                           text="Watt", 
+                                           angle=90)
         
     def plot_z_axsis(self):
         # Z-Achse
@@ -77,10 +77,10 @@ class CoordinateSystem:
                                                self.parameters.rand + self.parameters.breite + 10 + 5, 
                                                y)
             
-            self.parameters.canvas.create_text(self.parameters.rand + self.parameters.breite + 40,
-                                               self.parameters.hoehe / 2,
-                                               text="Cadence",
-                                               angle=270)
+        self.parameters.canvas.create_text(self.parameters.rand + self.parameters.breite + 40,
+                                           self.parameters.hoehe / 2,
+                                           text="Cadence",
+                                           angle=270)
             
     def plot_ftp_line(self):
         #Line für FTP

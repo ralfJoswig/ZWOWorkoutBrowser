@@ -5,12 +5,18 @@
 <p></p>
 <p>List of workoutsegments</p>
 <img src="./Segments.png" alt="Page with Segments">
-p></p>
+<p></p>
 <p>Workoutgraphic</p>
 <img src="./Grafic.png" alt="Page with Grafic">
-p></p>
+<p></p>
 <p>Page with options</p>
 <img src="./Options.png" alt="Page with Options">
+<h3>Version 0.2</h3>
+<ul>
+  <li>added calculatet field for NP</li>
+  <li>added calculatet field for average Power</li>
+  <li>added calculatet field for TSS</li>
+</ul>
 <h3>Version 0.1</h3>
 <ul>
   <li>added line for FTP in graphic</li>

@@ -175,6 +175,7 @@ class WorkoutDisplayGraph:
         self.parameters.max_x = int(workout.duration / 60)
         self.parameters.max_y = int(workout.max_power * ftp)
         self.parameters.min_watt = min_watt
+        self.parameters.max_cadence = workout.get_max_cadence()
         self.parameters.canvas.delete('all')
         self.workout = workout
         self.parameters.ftp = ftp
@@ -185,8 +186,8 @@ class WorkoutDisplayGraph:
         for segment in workout.segments:
             if segment.get_segment_type() == SegmentType.INTERVALST:
                 for i in range(segment.get_repeat()):
-                    on_power = int(segment.get_power().start_power * ftp)
-                    off_power = int(segment.get_power().end_power * ftp)
+                    on_power = int(segment.get_power().get_start_power_for_ftp(ftp))
+                    off_power = int(segment.get_power().get_end_power_for_ftp(ftp))
                     tags = [f"Dauer: {segment.get_on_duration_as_text()}",]
                     tags.append(f"Leistung: {on_power}")
                     if segment.get_cadence() > 0:
@@ -206,8 +207,8 @@ class WorkoutDisplayGraph:
                                          segment.get_cadence(), 
                                          workout.get_max_cadence())
             else:
-                start_power = int(segment.get_power().start_power * ftp)
-                end_power = int(segment.get_power().end_power * ftp)
+                start_power = int(segment.get_power().get_start_power_for_ftp(ftp))
+                end_power = int(segment.get_power().get_end_power_for_ftp(ftp))
 
                 tags = [f"Dauer: {segment.get_duration_as_text()}",]
                 if segment.get_power().start_power == segment.get_power().end_power:

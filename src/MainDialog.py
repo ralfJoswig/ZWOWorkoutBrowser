@@ -27,7 +27,7 @@ class MainDialog:
         self.workout = None
         
         self.programm_titel = "ZWO-Workout-Browser"
-        version = '0.1'
+        version = '0.2'
         self.programm_titel = self.programm_titel + " " + version
 
         self.root = root

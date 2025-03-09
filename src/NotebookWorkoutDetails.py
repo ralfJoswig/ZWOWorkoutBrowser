@@ -10,4 +10,4 @@ class NotebookWorkoutDetails:
         return self.__frame
         
     def set_workout(self, workout, ftp, min_watt):
-        self.__details.set_workout(workout)
+        self.__details.set_workout(workout, ftp)
