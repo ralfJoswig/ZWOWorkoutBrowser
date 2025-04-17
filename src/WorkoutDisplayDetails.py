@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import ttk
 import tkinter.scrolledtext as scrolledtext
 from NormalizedAndAveragePower import NormalizedAndAveragePower
+from pathlib import Path
+import gettext
+from Options import Options
 
 class WorkoutDisplayDetails:
     def __init__(self, root):
@@ -25,7 +28,7 @@ class WorkoutDisplayDetails:
         
     def add_tss(self):
         ttk.Label(self.__frame, 
-                  text="TSS:").grid(row=2, 
+                  text="TSS").grid(row=2, 
                                    column=2, 
                                    sticky='w', 
                                    padx=10, 
@@ -43,7 +46,7 @@ class WorkoutDisplayDetails:
 
     def add_normalized_power(self):
         ttk.Label(self.__frame, 
-                  text="NP:").grid(row=2, 
+                  text="NP").grid(row=2, 
                                    column=0, 
                                    sticky='w', 
                                    padx=10, 
@@ -61,7 +64,7 @@ class WorkoutDisplayDetails:
         
     def add_average_power(self):
         ttk.Label(self.__frame, 
-                  text="Durchschnittsleistung:").grid(row=1, 
+                  text=_("Durchschnittsleistung")).grid(row=1, 
                                                       column=4, 
                                                       sticky='w', 
                                                       padx=10, 
@@ -79,7 +82,7 @@ class WorkoutDisplayDetails:
         
     def add_description(self):
         ttk.Label(self.__frame, 
-                  text="Bemerkung:").grid(row=3, 
+                  text=_("Bemerkung")).grid(row=3, 
                                           column=0, 
                                           columnspan=2, 
                                           sticky='w', 
@@ -118,7 +121,7 @@ class WorkoutDisplayDetails:
 
     def add_name(self):
         ttk.Label(self.__frame, 
-                  text="Name:").grid(row=0, 
+                  text=_("Name")).grid(row=0, 
                                      column=0, 
                                      sticky='w', 
                                      padx=10, 
@@ -136,7 +139,7 @@ class WorkoutDisplayDetails:
 
     def add_author(self):
         ttk.Label(self.__frame, 
-                  text="Autor:").grid(row=0, 
+                  text=_("Autor")).grid(row=0, 
                                       column=2, 
                                       sticky='w', 
                                       padx=10, 
@@ -154,7 +157,7 @@ class WorkoutDisplayDetails:
 
     def add_type(self):
         ttk.Label(self.__frame, 
-                  text="Typ:").grid(row=0, 
+                  text=_("Typ")).grid(row=0, 
                                     column=4, 
                                     sticky='w', 
                                     padx=10, 
@@ -172,7 +175,7 @@ class WorkoutDisplayDetails:
         
     def add_segment_count(self):
         ttk.Label(self.__frame, 
-                  text="Anzahl Segmente:").grid(row=1, 
+                  text=_("Anzahl Segmente")).grid(row=1, 
                                                 column=0, 
                                                 sticky='w', 
                                                 padx=10, 
@@ -190,7 +193,7 @@ class WorkoutDisplayDetails:
         
     def add_duration(self):
         ttk.Label(self.__frame, 
-                  text="Dauer:").grid(row=1, 
+                  text=_("Dauer")).grid(row=1, 
                                       column=2, 
                                       sticky='w', 
                                       padx=10, 
@@ -214,7 +217,10 @@ class WorkoutDisplayDetails:
                                 description if description != None else "")
         self.remark_text.config(state=tk.DISABLED)
 
-    def set_workout(self, workout, ftp):
+    def set_workout(self, workout):
+        options = Options.get_instanz()
+        ftp = options.get_ftp()
+        
         self.__name_var.set(workout.name)
         self.__author_var.set(workout.author)
         self.__type_var.set(workout.sportType.value)

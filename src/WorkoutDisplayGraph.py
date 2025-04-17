@@ -2,6 +2,9 @@ import tkinter as tk
 from EnumSegmentType import SegmentType
 import GraphicsParameter
 import CoordinateSystem
+from pathlib import Path
+import gettext
+from Options import Options
 
 class WorkoutDisplayGraph:
     def __init__(self, root):
@@ -53,7 +56,7 @@ class WorkoutDisplayGraph:
             self.parameters.x0 = self.parameters.rand
             self.parameters.y0 = self.parameters.hoehe + self.parameters.rand
             self.hide_tooltip(None)
-            self.set_workout(self.workout, self.parameters.ftp, self.parameters.min_watt)
+            self.set_workout(self.workout)
 
     def bind_events(self):
         self.parameters.canvas.tag_bind('segment', 
@@ -171,7 +174,11 @@ class WorkoutDisplayGraph:
     def get_frame(self):
         return self.__frame
     
-    def set_workout(self, workout, ftp, min_watt):
+    def set_workout(self, workout):
+        options = Options.get_instanz()
+        ftp = options.get_ftp()
+        min_watt = options.get_minWatt4Grafic()
+        
         self.parameters.max_x = int(workout.duration / 60)
         self.parameters.max_y = int(workout.max_power * ftp)
         self.parameters.min_watt = min_watt
@@ -188,19 +195,19 @@ class WorkoutDisplayGraph:
                 for i in range(segment.get_repeat()):
                     on_power = int(segment.get_power().get_start_power_for_ftp(ftp))
                     off_power = int(segment.get_power().get_end_power_for_ftp(ftp))
-                    tags = [f"Dauer: {segment.get_on_duration_as_text()}",]
-                    tags.append(f"Leistung: {on_power}")
+                    tags = [_("Dauer") + f" {segment.get_on_duration_as_text()}",]
+                    tags.append(_("Leistung") + f" {on_power}")
                     if segment.get_cadence() > 0:
-                        tags.append(f"Trittfrequenz: {segment.get_cadence()}")
+                        tags.append(_("Trittfrequenz") + f" {segment.get_cadence()}")
                     self.zeichne_segment(on_power, 
                                          on_power, 
                                          segment.on_duration / 60,tags,
                                          segment.get_cadence(), 
                                          workout.get_max_cadence())
-                    tags = [f"Dauer: {segment.get_off_duration_as_text()}",]
-                    tags.append(f"Leistung: {off_power}")
+                    tags = [_("Dauer") + f" {segment.get_off_duration_as_text()}",]
+                    tags.append(_("Leistung") + f"{off_power}")
                     if segment.get_cadence() > 0:
-                        tags.append(f"Trittfrequenz: {segment.get_cadence()}")
+                        tags.append(_("Trittfrequenz") + f" {segment.get_cadence()}")
                     self.zeichne_segment(off_power, 
                                          off_power, 
                                          segment.off_duration / 60,tags,
@@ -210,14 +217,14 @@ class WorkoutDisplayGraph:
                 start_power = int(segment.get_power().get_start_power_for_ftp(ftp))
                 end_power = int(segment.get_power().get_end_power_for_ftp(ftp))
 
-                tags = [f"Dauer: {segment.get_duration_as_text()}",]
+                tags = [_("Dauer") + f" {segment.get_duration_as_text()}",]
                 if segment.get_power().start_power == segment.get_power().end_power:
-                    tags.append(f"Leistung: {start_power}")
+                    tags.append(_("Leistung") + f" {start_power}")
                 else:
-                    tags.append(f"Leistung: {start_power}/{end_power}")
+                    tags.append(_("Leistung") + f" {start_power}/{end_power}")
                 dummy = segment.get_cadence()
                 if segment.get_cadence() > 0:
-                    tags.append(f"Trittfrequenz: {segment.get_cadence()}")
+                    tags.append(_("Trittfrequenz") + f" {segment.get_cadence()}")
                 
                 self.zeichne_segment(start_power,
                                      end_power,  

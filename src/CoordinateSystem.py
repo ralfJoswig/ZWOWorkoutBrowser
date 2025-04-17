@@ -1,6 +1,9 @@
 import GraphicsParameter
 import tkinter as tk
 
+from pathlib import Path
+import gettext
+
 class CoordinateSystem:
     def __init__(self, parameters: GraphicsParameter):
         self.parameters = parameters
@@ -32,7 +35,7 @@ class CoordinateSystem:
         # Achsenbeschriftungen
         self.parameters.canvas.create_text(self.parameters.breite/2 + self.parameters.rand, 
                                 self.parameters.hoehe + self.parameters.rand + 40, 
-                                text="Zeit (Minuten)")
+                                text=_("Zeit (Minuten)"))
 
     def plot_y_axsis(self):
         # Y-Achse
@@ -79,7 +82,7 @@ class CoordinateSystem:
             
         self.parameters.canvas.create_text(self.parameters.rand + self.parameters.breite + 40,
                                            self.parameters.hoehe / 2,
-                                           text="Cadence",
+                                           text=_("Cadence"),
                                            angle=270)
             
     def plot_ftp_line(self):
@@ -94,7 +97,7 @@ class CoordinateSystem:
         
         self.parameters.canvas.create_text(self.parameters.rand + self.parameters.breite + 40,
                                            y1,#self.parameters.hoehe / 2,
-                                           text="FTP",
+                                           text=_("FTP"),
                                            angle=270,
                                            fill="cyan")
         

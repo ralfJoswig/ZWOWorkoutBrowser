@@ -1,10 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
+from pathlib import Path
+import gettext
 
 class ProgressWindow(tk.Toplevel):
     def __init__(self, parent):
         super().__init__(parent)
-        self.title("Fortschritt")
+        self.title(_("Fortschritt"))
         self.geometry("300x100")
         
         # Fenster in der Mitte des Hauptfensters platzieren

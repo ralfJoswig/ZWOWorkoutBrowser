@@ -1,5 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
+from pathlib import Path
+import gettext
+from Options import Options
 
 class WorkoutDisplaySegments:
     def __init__(self, root):
@@ -21,17 +24,17 @@ class WorkoutDisplaySegments:
                                   "Texte")
         
         self.__tree.heading("Wiederholungen",
-                            text="Wiedh.")
+                            text=_("Wiedh."))
         self.__tree.heading("Dauer", 
-                            text="Dauer")
+                            text=_("Dauer"))
         self.__tree.heading("Typ", 
-                            text="Typ")
+                            text=_("Typ"))
         self.__tree.heading("Watt", 
-                            text="Watt")
+                            text=_("Watt"))
         self.__tree.heading("Cadence", 
-                            text="Cadence")
+                            text=_("Cadence"))
         self.__tree.heading("Texte", 
-                            text="Texte")
+                            text=_("Texte"))
         
         self.__tree.column("Wiederholungen",
                             width=50)
@@ -62,8 +65,11 @@ class WorkoutDisplaySegments:
                                    segment.get_cadence(),
                                    segment.get_text_count()))
 
-    def set_workout(self, workout, ftp):
+    def set_workout(self, workout):
         self.tree_delete()
+        
+        options = Options.get_instanz()
+        ftp = options.get_ftp()
         
         for segment in workout.segments:
             self.tree_insert(segment, segment.get_power().get_as_text(ftp))

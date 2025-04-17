@@ -11,6 +11,11 @@
 <p></p>
 <p>Page with options</p>
 <img src="./Options.png" alt="Page with Options">
+<h3>Version 0.3</h3>
+<ul>
+  <li>added translation for german and english</li>
+  <li></li>
+</ul>
 <h3>Version 0.2</h3>
 <ul>
   <li>added calculatet field for NP</li>

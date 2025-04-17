@@ -10,16 +10,9 @@ from NotebookWorkoutSegments import NotebookWorkoutSegments
 from NotebookWorkoutGraph import NotebookWorkoutGraph
 from pathlib import Path
 from ProgressWindow import ProgressWindow
+from LanguageSwitcher import LanguageSwitcher
 import gettext
-
-#https://phrase.com/blog/posts/translate-python-gnu-gettext/
-_ = gettext.gettext
-
-#el = gettext.translation('base', localedir='locales', languages=['de'])
-
-#el.install()
-
-#_ = el.gettext
+from Options import Options
 
 class MainDialog:
     def __init__(self, root):
@@ -27,13 +20,17 @@ class MainDialog:
         self.workout = None
         
         self.programm_titel = "ZWO-Workout-Browser"
-        version = '0.2'
+        version = '0.3'
         self.programm_titel = self.programm_titel + " " + version
 
         self.root = root
         self.root.title(self.programm_titel)
-
+        
+        self.options = Options.get_instanz()
         self.root.geometry('800x680')
+        
+        language_switcher = LanguageSwitcher()
+        language_switcher.set_language(self.options.get_language())
 
         # Menüleiste hinzufügen
         self.add_menu(self.root)
@@ -74,9 +71,7 @@ class MainDialog:
         if self.workout is None:
             return
         for notebook in self.data_notebook_list:
-            notebook.set_workout(self.workout, 
-                                 self.notebook_options.get_ftp(),
-                                 self.notebook_options.get_min_watt())
+            notebook.set_workout(self.workout)
 
     def add_menu(self, root):
         # Create menubar
@@ -94,7 +89,7 @@ class MainDialog:
                               underline=0)
         file_menu.add_separator()
         file_menu.add_command(label=_("Beenden"), 
-                              command=root.quit)
+                              command=self.quit)
 
         # Create Help menu
         help_menu = tk.Menu(menubar, 
@@ -105,6 +100,12 @@ class MainDialog:
                               command=self.show_about)
         help_menu.add_command(label=_("Lizenz anzeigen"),
                               command=self.show_license)
+        
+    def quit(self):
+        """Beendet die Anwendung"""
+        options = Options.Options()
+        options.save_to_file()
+        self.root.quit()
 
     def show_about(self):
         """Zeigt den Über-Dialog an"""
@@ -143,8 +144,6 @@ class MainDialog:
                                         _("leite Workout weiter...."))
         # Workout an die Notebooks übergeben
         for notebook in self.data_notebook_list:
-            notebook.set_workout(self.workout, 
-                                 self.notebook_options.get_ftp(), 
-                                 self.notebook_options.get_min_watt())
+            notebook.set_workout(self.workout)
             
         progress_window.destroy()

@@ -17,3 +17,5 @@ __pycache__/
 output/
 Workouts/
 Tools/
+xgettext.exe
+ZWOBrowser.ini

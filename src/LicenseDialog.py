@@ -1,11 +1,12 @@
 import tkinter as tk
 from tkhtmlview import HTMLScrolledText
 from pathlib import Path
+import gettext
 
 class LicenseDialog:
     def __init__(self):
         self.root = tk.Toplevel()
-        self.root.title("Lizenz")
+        self.root.title(_("Lizenz"))
         
         # Fenstergröße und Position
         window_width = 800
@@ -33,7 +34,7 @@ class LicenseDialog:
         
         # Schließen-Button
         close_button = tk.Button(main_frame,
-                                 text="Schließen",
+                                 text=_("Schließen"),
                                  command=self.root.destroy,
                                  width=20)
         close_button.pack(pady=10)

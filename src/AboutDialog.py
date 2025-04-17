@@ -2,10 +2,18 @@ import tkinter as tk
 from tkhtmlview import HTMLScrolledText
 from pathlib import Path
 
+import gettext
+
+appname = 'ZWOBroser'
+localedir = Path(__file__).parent.resolve() / 'locales'
+en_i18n = gettext.translation(appname, localedir, fallback=False, languages=['de'])
+en_i18n.install()
+_ = en_i18n.gettext
+
 class AboutDialog:
     def __init__(self):
         self.root = tk.Toplevel()
-        self.root.title("Über ZWO-Workout-Browser")
+        self.root.title(_("Über") + " ZWO-Workout-Browser")
         
         # Fenstergröße und Position
         window_width = 800
@@ -33,7 +41,7 @@ class AboutDialog:
         
         # Schließen-Button
         close_button = tk.Button(main_frame,
-                                 text="Schließen",
+                                 text=_("Schließen"),
                                  command=self.root.destroy,
                                  width=20)
         close_button.pack(pady=10)
