@@ -1,9 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-import tkinter.scrolledtext as scrolledtext
 from NormalizedAndAveragePower import NormalizedAndAveragePower
-from pathlib import Path
-import gettext
 from Options import Options
 
 class WorkoutDisplayDetails:
@@ -25,7 +22,25 @@ class WorkoutDisplayDetails:
         self.add_average_power()
         self.add_normalized_power()
         self.add_tss()
+        self.add_est_calories()
         
+    def add_est_calories(self):
+        ttk.Label(self.__frame, 
+                  text=_("Geschätzte Kalorien")).grid(row=2, 
+                                                      column=4, 
+                                                      sticky='w', 
+                                                      padx=10, 
+                                                      pady=5)
+        self.__est_calories_var = tk.StringVar(value="")
+        self.__est_calories_entry = ttk.Entry(self.__frame, 
+                                              textvariable=self.__est_calories_var, 
+                                              width=5, 
+                                              state="readonly")
+        self.__est_calories_entry.grid(row=2, 
+                                       column=5, 
+                                       sticky='w', 
+                                       padx=10, 
+                                       pady=5)
     def add_tss(self):
         ttk.Label(self.__frame, 
                   text="TSS").grid(row=2, 
@@ -235,3 +250,5 @@ class WorkoutDisplayDetails:
         intensitaetsfaktor = normalized_power / ftp
         tss = round(( workout.duration * normalized_power * intensitaetsfaktor ) / ( ftp * 3600 ) * 100)
         self.__tss_var.set(tss)
+        
+        self.__est_calories_var.set(int(average_power * workout.duration / 4184 / 0.239))

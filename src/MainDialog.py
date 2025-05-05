@@ -11,23 +11,26 @@ from NotebookWorkoutGraph import NotebookWorkoutGraph
 from pathlib import Path
 from ProgressWindow import ProgressWindow
 from LanguageSwitcher import LanguageSwitcher
-import gettext
 from Options import Options
+from Version import Version
+from tkinter import messagebox
 
 class MainDialog:
+    
     def __init__(self, root):
         self.data_notebook_list = []
         self.workout = None
         
         self.programm_titel = "ZWO-Workout-Browser"
-        version = '0.3'
-        self.programm_titel = self.programm_titel + " " + version
+
+        self.programm_titel = self.programm_titel + " " + Version.get_version()
 
         self.root = root
         self.root.title(self.programm_titel)
         
         self.options = Options.get_instanz()
-        self.root.geometry('800x680')
+        
+        self.root.geometry('' + str(self.options.get_winfo_width()) + 'x' + str(self.options.get_winfo_height()) + '+' + str(self.options.get_winfo_x()) + '+' + str(self.options.get_winfo_y()))
         
         language_switcher = LanguageSwitcher()
         language_switcher.set_language(self.options.get_language())
@@ -103,9 +106,10 @@ class MainDialog:
         
     def quit(self):
         """Beendet die Anwendung"""
-        options = Options.Options()
-        options.save_to_file()
-        self.root.quit()
+        if messagebox.askokcancel(_("Beenden"), 
+                              _("Möchten Sie die Anwendung wirklich schließen?")):
+            Options.get_instanz().save_to_file()
+            self.root.quit()
 
     def show_about(self):
         """Zeigt den Über-Dialog an"""

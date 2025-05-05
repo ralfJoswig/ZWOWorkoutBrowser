@@ -1,6 +1,5 @@
 import gettext
 import locale
-import os
 from pathlib import Path
 
 class LanguageSwitcher:    

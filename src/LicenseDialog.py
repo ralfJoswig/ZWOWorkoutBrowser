@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkhtmlview import HTMLScrolledText
 from pathlib import Path
-import gettext
 
 class LicenseDialog:
     def __init__(self):

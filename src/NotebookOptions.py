@@ -77,6 +77,15 @@ class NotebookOptions:
                               sticky='w', 
                               padx=10, 
                               pady=5)
+        
+        # Hinweis Neustart für Sprachenwechsel
+        ttk.Label(self.__frame, 
+                  text=_("Für den Sprachenwechsel bitte die Anwendung neu starten!")).grid(row=2, 
+                                                                                           column=2, 
+                                                                                           columnspan=2, 
+                                                                                           sticky='w', 
+                                                                                           padx=10, 
+                                                                                           pady=5)
 
                 
         # Funktion, die bei Auswahl einer Sprache aufgerufen wird

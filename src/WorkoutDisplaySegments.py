@@ -1,7 +1,5 @@
 import tkinter as tk
 from tkinter import ttk
-from pathlib import Path
-import gettext
 from Options import Options
 
 class WorkoutDisplaySegments:

@@ -11,10 +11,18 @@
 <p></p>
 <p>Page with options</p>
 <img src="./Options.png" alt="Page with Options">
+<h3>Version 0.4</h3>
+<ul>
+  <li>correct graphic error when cadence has gaps</li>
+  <li>fixed error colculation TSS, NP an avg. Power</li>
+  <li>added estimated calories</li>
+  <li>fixed differend Versionnumbers in Windowtitel and About-Dialog</li>
+  <li>fixed Error when used menuoption File-Close</li>
+  <li>added save windowsposition and -size on close</li>
+</ul>
 <h3>Version 0.3</h3>
 <ul>
   <li>added translation for german and english</li>
-  <li></li>
 </ul>
 <h3>Version 0.2</h3>
 <ul>

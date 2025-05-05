@@ -1,7 +1,5 @@
 import tkinter as tk
 from tkinter import ttk
-from pathlib import Path
-import gettext
 
 class ProgressWindow(tk.Toplevel):
     def __init__(self, parent):

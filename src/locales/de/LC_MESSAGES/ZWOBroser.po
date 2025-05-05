@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-17 23:30+0200\n"
-"PO-Revision-Date: 2025-04-17 23:33+0200\n"
+"POT-Creation-Date: 2025-05-05 21:51+0200\n"
+"PO-Revision-Date: 2025-04-30 22:24+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -19,91 +19,97 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 #: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\AboutDialog.py:16
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:99
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:102
 msgid "Über"
 msgstr "Über"
 
 #: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\AboutDialog.py:44
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\LicenseDialog.py:37
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\LicenseDialog.py:36
 msgid "Schließen"
 msgstr "Schließen"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\CoordinateSystem.py:38
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\CoordinateSystem.py:35
 msgid "Zeit (Minuten)"
 msgstr "Zeit (Minuten)"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\CoordinateSystem.py:85
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:35
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\CoordinateSystem.py:82
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:33
 msgid "Cadence"
 msgstr "Trittfrequenz"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\CoordinateSystem.py:100
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\CoordinateSystem.py:97
 #: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\NotebookOptions.py:18
 msgid "FTP"
 msgstr "FTP"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\LicenseDialog.py:9
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\LicenseDialog.py:8
 msgid "Lizenz"
 msgstr "Lizenz"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:46
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:49
 msgid "Details"
 msgstr "Details"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:52
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:55
 msgid "Segmente"
 msgstr "Segmente"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:58
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:61
 msgid "Grafik"
 msgstr "Grafik"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:64
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:67
 msgid "Einstellungen"
 msgstr "Einstellungen"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:84
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:87
 msgid "Datei"
 msgstr "Datei"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:86
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:89
 msgid "Öffnen"
 msgstr "Öffnen"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:91
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\ZWOWorkoutBrowser.py:10
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:94
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:109
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\ZWOWorkoutBrowser.py:8
 msgid "Beenden"
 msgstr "Beenden"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:97
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:100
 msgid "Hilfe"
 msgstr "Hilfe"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:101
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:104
 msgid "Lizenz anzeigen"
 msgstr "Lizenz anzeigen"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:120
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:110
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\ZWOWorkoutBrowser.py:9
+msgid "Möchten Sie die Anwendung wirklich schließen?"
+msgstr "Möchten Sie die Anwendung wirklich schließen?"
+
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:124
 msgid "Datei auswählen"
 msgstr "Datei auswählen"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:121
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:125
 msgid "ZWO Files"
 msgstr "ZWO Dateien"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:123
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:127
 msgid "All Files"
 msgstr "Alle Dateien"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:132
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:136
 msgid "Lese Datei ein...."
 msgstr "Lese Datei ein...."
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:138
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:142
 msgid "parse Datei...."
 msgstr "parse Datei...."
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:144
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\MainDialog.py:148
 msgid "leite Workout weiter...."
 msgstr "leite Workout weiter...."
 
@@ -115,68 +121,72 @@ msgstr "min. Watt Grafik"
 msgid "Sprache"
 msgstr "Sprache"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\ProgressWindow.py:9
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\NotebookOptions.py:83
+msgid "Für den Sprachenwechsel bitte die Anwendung neu starten!"
+msgstr "Für den Sprachenwechsel bitte die Anwendung neu starten!"
+
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\ProgressWindow.py:7
 msgid "Fortschritt"
 msgstr "Fortschritt"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:67
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:29
+msgid "Geschätzte Kalorien"
+msgstr "Geschätzte Kalorien"
+
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:82
 msgid "Durchschnittsleistung"
 msgstr "Durchschnittsleistung"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:85
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:100
 msgid "Bemerkung"
 msgstr "Bemerkung"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:124
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:139
 msgid "Name"
 msgstr "Name"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:142
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:157
 msgid "Autor"
 msgstr "Autor"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:160
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:31
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:175
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:29
 msgid "Typ"
 msgstr "Typ"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:178
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:193
 msgid "Anzahl Segmente"
 msgstr "Anzahl Segmente"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:196
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:198
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:207
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:220
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:29
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayDetails.py:211
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:199
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:208
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:221
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:27
 msgid "Dauer"
 msgstr "Dauer"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:199
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:208
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:222
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:224
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:200
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:209
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:223
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:225
 msgid "Leistung"
 msgstr "Leistung"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:201
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:210
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:227
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:202
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:211
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplayGraph.py:228
 msgid "Trittfrequenz"
 msgstr "Trittfrequenz"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:27
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:25
 msgid "Wiedh."
 msgstr "Wiedh."
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:33
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:31
 msgid "Watt"
 msgstr "Watt"
 
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:37
+#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\WorkoutDisplaySegments.py:35
 msgid "Texte"
 msgstr "Texte"
-
-#: C:\Users\ralfj\Documents\VisualStudio\python\ZWOWorkoutBrowser\src\ZWOWorkoutBrowser.py:11
-msgid "Möchten Sie die Anwendung wirklich schließen?"
-msgstr "Möchten Sie die Anwendung wirklich schließen?"

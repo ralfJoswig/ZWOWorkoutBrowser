@@ -1,9 +1,6 @@
 import GraphicsParameter
 import tkinter as tk
 
-from pathlib import Path
-import gettext
-
 class CoordinateSystem:
     def __init__(self, parameters: GraphicsParameter):
         self.parameters = parameters

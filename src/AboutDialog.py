@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkhtmlview import HTMLScrolledText
 from pathlib import Path
-
 import gettext
+from Version import Version
 
 appname = 'ZWOBroser'
 localedir = Path(__file__).parent.resolve() / 'locales'
@@ -46,5 +46,6 @@ class AboutDialog:
                                  width=20)
         close_button.pack(pady=10)
         
+  
         # Dialogtext setzen
-        self.html_viewer.set_html("<h1>ZWO-Workout-Browser</h1><p>Version 1.0</p>")
+        self.html_viewer.set_html("<h1>ZWO-Workout-Browser</h1><p>Version " + Version.get_version() + "</p>")

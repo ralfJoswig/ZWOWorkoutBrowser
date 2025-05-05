@@ -2,8 +2,6 @@ import tkinter as tk
 from EnumSegmentType import SegmentType
 import GraphicsParameter
 import CoordinateSystem
-from pathlib import Path
-import gettext
 from Options import Options
 
 class WorkoutDisplayGraph:
@@ -149,7 +147,10 @@ class WorkoutDisplayGraph:
                                    outline='red',    # Randfarbe
                                    width=1,
                                    tags=tags)
-        
+            
+        if cadence == 0:    
+            self.draw_first_cadence = True
+            
         if max_cadence != 0 and cadence != 0:
             y1 = self.parameters.hoehe + self.parameters.rand - (cadence * self.parameters.hoehe / max_cadence)
             y2 = y1

@@ -38,8 +38,8 @@ class NormalizedAndAveragePower:
                 #case SegmentType.FREE, :
                 case SegmentType.INTERVALST:
                     for interval in range(segment.get_repeat()):
-                        power_series.extend([segment.get_power().get_start_power_for_ftp(ftp)] * segment.get_duration())
-                        power_series.extend([segment.get_power().get_end_power_for_ftp(ftp)] * segment.get_duration())
+                        power_series.extend([segment.get_power().get_start_power_for_ftp(ftp)] * segment.on_duration)
+                        power_series.extend([segment.get_power().get_end_power_for_ftp(ftp)] * segment.off_duration)
     
         power_array = np.array(power_series)
     

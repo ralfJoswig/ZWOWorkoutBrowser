@@ -1,5 +1,4 @@
 import xml.etree.ElementTree as ET
-from dataclasses import dataclass
 from Power import Power
 from SegmentSingle import SegmentSingle
 from SegmentInterval import SegmentInterval
